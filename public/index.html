@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="style.css">
+        <script src="app.js" defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" defer async></script>
+    </head>
+    <body>
+        <h1>Upload Pollution Image</h1>
+        <form action="/api/images/new" method="post" enctype="multipart/form-data">
+            <label>
+                <span>Image</span>
+                <input type="file" name="file" id="image" accept="image/*">
+            </label>
+            
+            <label>
+                <span>Description</span>
+                <textarea name="description" id="description"></textarea>
+            </label>
+
+            <label>
+                <span>Location (lat, lon)</span>
+                <input type="number" name="latitude" id="lat">
+                <input type="number" name="longitude" id="lon">
+            </label>
+
+            <button type="submit">Upload</button>
+        </form>
+    </body>
+</html>
