@@ -7,7 +7,7 @@ import { randomUUID } from 'crypto';
 import multer from 'multer';
 import { db } from './database.js';
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const ORIGIN = `https://localhost:${PORT}`;
 const app = express();
 

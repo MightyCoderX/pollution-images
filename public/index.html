@@ -4,29 +4,41 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Pollution Image</title>
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin>
+        
         <link rel="stylesheet" href="style.css">
+
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin></script>
+        
         <script src="app.js" defer></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" defer async></script>
     </head>
     <body>
         <h1>Upload Pollution Image</h1>
         <form action="/api/images/new" method="post" enctype="multipart/form-data">
-            <label>
-                <span>Image</span>
-                <input type="file" name="file" id="image" accept="image/*">
+            <label class="field image">
+                <img src="" alt="preview" id="preview" class="preview">
+                <div class="placeholder">
+                    <span class="icon material-icons-round">insert_photo</span>
+                    <span class="label">Drop image here or click to upload</span>
+                </div>
+                <input type="file" name="file" id="image" accept="image/*" required>
             </label>
             
-            <label>
-                <span>Description</span>
-                <textarea name="description" id="description"></textarea>
+            <label class="field">
+                <span class="field-label">Description</span>
+                <textarea name="description" id="description" placeholder="Describe the image you want to upload..." required></textarea>
             </label>
 
-            <label>
-                <span>Location (lat, lon)</span>
-                <input type="number" name="latitude" id="lat">
-                <input type="number" name="longitude" id="lon">
+            <label class="field location">
+                <span class="field-label">Location</span>
+                <div class="coords-input">
+                    <input type="number" id="latitude" name="latitude" required>
+                    <input type="number" id="longitude" name="longitude" required>
+                </div>
+                <div id="map"></div>
             </label>
 
             <button type="submit">Upload</button>

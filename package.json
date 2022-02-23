@@ -1,5 +1,5 @@
 {
-  "name": "pullution-images",
+  "name": "pollution-images",
   "version": "1.0.0",
   "description": "Upload or get the list of images of polluted places",
   "main": "server.js",
