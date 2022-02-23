@@ -18,28 +18,28 @@
     <body>
         <h1>Pollution Images API Sample Form</h1>
         <form action="/api/images/new" method="post" enctype="multipart/form-data">
-            <label class="field image">
+            <div class="field image">
                 <img src="" alt="preview" id="preview" class="preview">
                 <div class="placeholder">
                     <span class="icon material-icons-round">insert_photo</span>
                     <span class="label">Drop image here or click to upload</span>
                 </div>
                 <input type="file" name="file" id="image" accept="image/*" required>
-            </label>
+            </div>
             
-            <label class="field">
+            <div class="field">
                 <span class="field-label">Description</span>
                 <textarea name="description" id="description" placeholder="Describe the image you want to upload..." required></textarea>
-            </label>
+            </div>
 
-            <label class="field location">
-                <span class="field-label">Location</span>
+            <div class="field location">
+                <span class="field-label">Location <span style="color: #999; font-size: 0.9em;">(Click on the map to select a location!)</span></span>
                 <div class="coords-input">
                     <input type="number" step="any" id="latitude" name="latitude" placeholder="Latitude" title="Latitude" required>
                     <input type="number" step="any" id="longitude" name="longitude" placeholder="Longitude" title="Longitude" required>
                 </div>
                 <div id="map"></div>
-            </label>
+            </div>
 
             <button type="submit">Upload</button>
         </form>

@@ -28,6 +28,7 @@ body
 h1
 {
     margin-bottom: 2em;
+    text-align: center;
 }
 
 form
@@ -73,7 +74,21 @@ form button
 {
     display: block;
     align-self: center;
-    padding: 0.5em 1em;
+    padding: 1em 2em;
+    background-color: #1639ad;
+    border: none;
+    border-radius: 100vw;
+    font-size: 1rem;
+    color: #eee;
+    outline: none;
+    width: 40%;
+    cursor: pointer;
+}
+
+form button:hover,
+form button:focus-visible
+{
+    filter: brightness(120%);
 }
 
 form .field
@@ -146,22 +161,19 @@ form .field.image input[type="file"]
 
 form .field.location .coords-input
 {
+    flex-wrap: wrap;
     display: flex;
-    --border-size: 0.5em; 
+    gap: 1em;
 }
 
-form .field.location .coords-input input:nth-of-type(1)
+form .field.location .coords-input input
 {
-    border-radius: var(--border-size) 0 0 var(--border-size);
-}
-
-form .field.location .coords-input input:nth-of-type(2)
-{
-    border-radius: 0 var(--border-size) var(--border-size) 0;
+    border-radius: 0.3em;
 }
 
 #map
 {
     width: 100%;
     height: 50vh;
+    border-radius: 0.5em;
 }
