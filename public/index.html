@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pollution Image</title>
+        <title>Pollution Images API sample form</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin>
@@ -16,7 +16,7 @@
         <script src="app.js" defer></script>
     </head>
     <body>
-        <h1>Upload Pollution Image</h1>
+        <h1>Pollution Images API Sample Form</h1>
         <form action="/api/images/new" method="post" enctype="multipart/form-data">
             <label class="field image">
                 <img src="" alt="preview" id="preview" class="preview">
@@ -35,8 +35,8 @@
             <label class="field location">
                 <span class="field-label">Location</span>
                 <div class="coords-input">
-                    <input type="number" id="latitude" name="latitude" required>
-                    <input type="number" id="longitude" name="longitude" required>
+                    <input type="number" step="any" id="latitude" name="latitude" placeholder="Latitude" title="Latitude" required>
+                    <input type="number" step="any" id="longitude" name="longitude" placeholder="Longitude" title="Longitude" required>
                 </div>
                 <div id="map"></div>
             </label>

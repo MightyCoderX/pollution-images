@@ -147,11 +147,17 @@ form .field.image input[type="file"]
 form .field.location .coords-input
 {
     display: flex;
+    --border-size: 0.5em; 
 }
 
-form .field.location .coords-input
+form .field.location .coords-input input:nth-of-type(1)
 {
-    
+    border-radius: var(--border-size) 0 0 var(--border-size);
+}
+
+form .field.location .coords-input input:nth-of-type(2)
+{
+    border-radius: 0 var(--border-size) var(--border-size) 0;
 }
 
 #map
