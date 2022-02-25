@@ -26,8 +26,11 @@ app.use('/', express.static('public'));
 
 
 const upload = multer({ dest: 'images' });
-app.post('/api/images/new', upload.single('file'), (req, res) =>
+app.post('/api/images/new', upload.single('image'), (req, res) =>
 {
+    if(!req.file && !(req.body.description || req.body.latitude || req.body.longitude))
+        return res.status(400).json({ error: `Bad Request: 'image', 'latitude' and 'longitude' must be in the body!` });
+
     const dir = 'images';
     if(!fs.existsSync(dir))
     {
@@ -50,9 +53,9 @@ app.post('/api/images/new', upload.single('file'), (req, res) =>
         mimeType: req.file.mimetype,
         size: req.file.size,
         created: new Date(),
-        desc: req.body.description,
-        lat: req.body.latitude,
-        lon: req.body.longitude
+        description: req.body.description,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
     };
 
     const query = 'INSERT INTO images (fileName, mimeType, size, dateCreated, description, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -61,20 +64,57 @@ app.post('/api/images/new', upload.single('file'), (req, res) =>
     {
         if(err)
         {
-            console.log(err);
+            console.error(err);
             res.status(400).json({ error: err.message });
             return;
         }
     
-        res.json(req.file);
+        
     });
+    res.json(data);
 });
 
 
 app.get('/api/images', (req, res) =>
 {
-    db.all('SELECT * FROM images', (error, rows) =>
+    const { limit } = req.query;
+
+    if(limit && (isNaN(limit) || limit < 1))
+        return res.status(400).json({ error: 'Limit parameter must be a number greater than or equal to 1!' });
+
+    const query = `SELECT * FROM images ${ limit ? 'LIMIT ' + limit : '' }`;
+
+    db.all(query, (err, rows) =>
     {
+        if(err)
+        {
+            console.error(err);
+            res.status(400).json({ error: err.message });
+            return;
+        }
         res.json(rows);
+    })
+});
+
+app.get('/api/images/:id', (req, res) =>
+{
+    if(isNaN(req.params.id))
+        return res.status(400).json({ error: 'Invalid id, it must be a number!' });
+
+    db.get(`SELECT * FROM images WHERE id = ${req.params.id}`, (err, row) =>
+    {
+        if(err)
+        {
+            console.error(err);
+            res.status(400).json({ error: err.message });
+            return;
+        }
+
+        if(!row)
+        {
+            res.status(404).json({ error: `Image with id ${req.params.id} not found` });
+        }
+
+        res.json(row);
     })
 });

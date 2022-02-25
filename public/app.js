@@ -37,4 +37,3 @@ function updateView()
     const lng = lngInput.value;
     map.flyTo([lat, lng], 10);
 }
-
