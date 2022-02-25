@@ -1,10 +1,15 @@
 # Pollution Images API
 An API to upload images showing polluted areas along with the location cooordinates and a description
-
-## Wiki
+<br>
+<br>
 [Working Sample Form](https://pollution-images-api.herokuapp.com/)
 
-API Url: `https://pollution-images-api.herokuapp.com/api/` 
+## Wiki
+
+#### API
+```
+https://pollution-images-api.herokuapp.com/api/
+```
 
 ### Endpoints
 
@@ -45,6 +50,28 @@ Sample Response
 ]
 ```
 
+<br>
+
+#### Get one image
+```HTTP
+GET  /images/:id
+```
+
+Sample Response
+```JSON
+{
+    "id": 1,
+    "fileName": "/images/<UUID>.jpeg",
+    "mimeType": "image/jpeg",
+    "size": 69471,
+    "dateCreated": 1645634608320,
+    "description": "An Image Showing A Polluted Area",
+    "latitude": 0.24107697642621,
+    "longitude": 0.24979591369629
+}
+```
+
+<br>
 
 #### Upload a new image
 ```HTTP
