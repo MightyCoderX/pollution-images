@@ -27,8 +27,11 @@ const upload = multer({ dest: 'images' });
 app.post('/api/images/new', upload.single('image'), (req, res) =>
 {
     if(!req.file && !(req.body.description || req.body.latitude || req.body.longitude))
-        return res.status(400).json({ error: `Bad Request: 'image', 'latitude' and 'longitude' must be in the body!` });
-
+        return res.status(400).json({ error: `Bad Request: 'image', 'description', 'latitude' and 'longitude' must be in the body!` });
+    
+    if(isNaN(req.body.latitude) || isNaN(req.body.longitude))
+        return res.status(400).json({ error: `Bad Request: 'latitude' and 'longitude' must be numbers!` });
+    
     const dir = 'images';
     if(!fs.existsSync(dir))
     {
@@ -52,8 +55,8 @@ app.post('/api/images/new', upload.single('image'), (req, res) =>
         size: req.file.size,
         dateCreated: Date.now(),
         description: req.body.description,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude
+        latitude: Number(req.body.latitude),
+        longitude: Number(req.body.longitude)
     };
 
     const query = 'INSERT INTO images (fileName, mimeType, size, dateCreated, description, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)';
