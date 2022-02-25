@@ -1,9 +1,7 @@
-import express, { query } from 'express';
-import fs, { rename } from 'fs';
-import path from 'path';
+import express from 'express';
+import fs from 'fs';
 import cors from 'cors';
 import { v4 as uuidV4 } from 'uuid';
-import { randomUUID } from 'crypto';
 import multer from 'multer';
 import { db } from './database.js';
 
@@ -60,7 +58,7 @@ app.post('/api/images/new', upload.single('image'), (req, res) =>
 
     const query = 'INSERT INTO images (fileName, mimeType, size, dateCreated, description, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)';
     
-    db.run(query, Object.values(data), (err, result) =>
+    db.run(query, Object.values(data), function(err, result)
     {
         if(err)
         {
@@ -68,10 +66,9 @@ app.post('/api/images/new', upload.single('image'), (req, res) =>
             res.status(400).json({ error: err.message });
             return;
         }
-    
-        
+
+        res.json({id: this.lastID, ...data});
     });
-    res.json(data);
 });
 
 

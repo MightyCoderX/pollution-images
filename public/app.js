@@ -2,12 +2,19 @@ const imageInput = document.getElementById('image');
 const latInput = document.getElementById('latitude');
 const lngInput = document.getElementById('longitude');
 
-imageInput.addEventListener('change', e =>
+updateImagePreview();
+
+imageInput.addEventListener('change', updateImagePreview);
+
+function updateImagePreview()
 {
+    console.log(imageInput, document.querySelector('form .field.image .preview'));
+    if(!imageInput.files[0]) return;
+    console.log('Showing image preview');
     const previewImg = document.querySelector('form .field.image .preview');
     previewImg.src = URL.createObjectURL(imageInput.files[0]);
     previewImg.classList.add('shown');
-});
+}
 
 const map = L.map('map', { center: [0, 0], zoom: 1 });
 map.locate({ 
