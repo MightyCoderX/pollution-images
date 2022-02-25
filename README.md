@@ -4,7 +4,7 @@ An API to upload images showing polluted areas along with the location cooordina
 <br>
 [Working Sample Form](https://pollution-images-api.herokuapp.com/)
 
-## Wiki
+## Docs & Examples
 
 #### API
 ```
@@ -84,7 +84,7 @@ description: text
 latitude: number
 longitude: number
 ```
-Basic form sample
+Basic form
 ```HTML
 <form action="/api/images/new" method="post" enctype="multipart/form-data">
     <input type="file" name="image" accept="image/*" required>
