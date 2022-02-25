@@ -15,7 +15,7 @@ https://pollution-images-api.herokuapp.com/api/
 
 #### Get a list of all the uploaded images
 ```HTTP
-GET  /images
+GET /images
 ```
 Query parameters
 <table>
@@ -54,7 +54,7 @@ Sample Response
 
 #### Get one image
 ```HTTP
-GET  /images/:id
+GET /images/:id
 ```
 
 Sample Response
