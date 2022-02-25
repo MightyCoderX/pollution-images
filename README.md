@@ -1,8 +1,12 @@
 # Pollution Images API
 An API to upload images showing polluted areas along with the location cooordinates and a description
 
-### Endpoints
+## Wiki
+[Working Sample Form](https://pollution-images-api.herokuapp.com/)
+
 API Url: `https://pollution-images-api.herokuapp.com/api/` 
+
+### Endpoints
 
 #### Get a list of all the uploaded images
 ```HTTP
