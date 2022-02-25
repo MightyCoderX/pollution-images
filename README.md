@@ -103,9 +103,9 @@ Response
   "fileName": "/images/<uuid>.jpg",
   "mimeType": "image/jpeg",
   "size": 62338,
-  "created": "2022-02-25T22:52:17.703Z",
+  "dateCreated": "2022-02-25T22:52:17.703Z",
   "description": "An Image Showing A Polluted Area",
   "latitude": "38.202434849820314",
-  "longitude": "15.26679039001465"
+  "longitude": "15.26679039001465",
 }
 ```
