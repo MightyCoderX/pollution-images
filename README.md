@@ -90,8 +90,8 @@ Basic form
     <input type="file" name="image" accept="image/*" required>
     <textarea name="description" required></textarea>
 
-    <input type="number" step="any" id="latitude" name="latitude" required>
-    <input type="number" step="any" id="longitude" name="longitude" required>
+    <input type="number" step="any" name="latitude" required>
+    <input type="number" step="any" name="longitude" required>
 
     <button type="submit">Upload</button>
 </form>
