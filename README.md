@@ -57,11 +57,11 @@ Sample Response
 GET /images/:id
 ```
 
-Sample Response
+Response
 ```JSON
 {
     "id": 1,
-    "fileName": "/images/<UUID>.jpeg",
+    "fileName": "/images/<UUID>.jpg",
     "mimeType": "image/jpeg",
     "size": 69471,
     "dateCreated": 1645634608320,
@@ -96,4 +96,16 @@ Basic form
     <button type="submit">Upload</button>
 </form>
 ```
-
+Response
+```JSON
+{
+  "id": 1,
+  "fileName": "/images/<uuid>.jpg",
+  "mimeType": "image/jpeg",
+  "size": 62338,
+  "created": "2022-02-25T22:52:17.703Z",
+  "description": "An Image Showing A Polluted Area",
+  "latitude": "38.202434849820314",
+  "longitude": "15.26679039001465"
+}
+```
