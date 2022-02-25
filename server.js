@@ -50,7 +50,7 @@ app.post('/api/images/new', upload.single('image'), (req, res) =>
         fileName: '/' + newPath,
         mimeType: req.file.mimetype,
         size: req.file.size,
-        dateCreated: new Date(),
+        dateCreated: Date.now(),
         description: req.body.description,
         latitude: req.body.latitude,
         longitude: req.body.longitude
