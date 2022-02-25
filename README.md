@@ -56,11 +56,11 @@ longitude: number
 Basic form sample
 ```HTML
 <form action="/api/images/new" method="post" enctype="multipart/form-data">
-    <input type="file" name="image" id="image" accept="image/*" required>
-    <textarea name="description" id="description" placeholder="Describe the image you want to upload..." required></textarea>
+    <input type="file" name="image" accept="image/*" required>
+    <textarea name="description" required></textarea>
 
-    <input type="number" step="any" id="latitude" name="latitude" placeholder="Latitude" title="Latitude" required>
-    <input type="number" step="any" id="longitude" name="longitude" placeholder="Longitude" title="Longitude" required>
+    <input type="number" step="any" id="latitude" name="latitude" required>
+    <input type="number" step="any" id="longitude" name="longitude" required>
 
     <button type="submit">Upload</button>
 </form>
