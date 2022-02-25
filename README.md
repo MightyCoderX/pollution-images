@@ -80,7 +80,7 @@ POST /images/new
 The POST request must include `Content-Type: multipart/form-data` and the body must contain the following fields:
 ```YML
 image: file
-description: text
+description: string
 latitude: number
 longitude: number
 ```
