@@ -63,7 +63,7 @@ Response
     "id": 1,
     "fileName": "/images/<UUID>.jpg",
     "mimeType": "image/jpeg",
-    "size": 69471,
+    "size": 69420,
     "dateCreated": 1645634608320,
     "description": "An Image Showing A Polluted Area",
     "latitude": 0.24107697642621,
@@ -102,10 +102,10 @@ Response
   "id": 1,
   "fileName": "/images/<uuid>.jpg",
   "mimeType": "image/jpeg",
-  "size": 62338,
-  "dateCreated": "2022-02-25T22:52:17.703Z",
+  "size": 69420,
+  "dateCreated": 1645634608320,
   "description": "An Image Showing A Polluted Area",
-  "latitude": "38.202434849820314",
-  "longitude": "15.26679039001465",
+  "latitude": 0.24107697642621,
+  "longitude": 0.24979591369629
 }
 ```
