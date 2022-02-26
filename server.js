@@ -46,7 +46,6 @@ app.post('/api/images/new', upload.single('image'), (req, res) =>
     fs.rename(oldPath, newPath, err =>
     {
        if(err) throw err;
-       console.log('Successfully Renamed File');
     });
 
     const data = {
