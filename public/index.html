@@ -18,6 +18,11 @@
     <body>
         <h1>Pollution Images API Sample Form</h1>
         <form action="/api/images/new" method="post" enctype="multipart/form-data">
+            <div class="field">
+                <span class="field-label">Place Name</span>
+                <input type="text" name="placeName" id="placeName" placeholder="Insert place name">
+            </div>
+
             <div class="field image">
                 <img src="" alt="preview" id="preview" class="preview">
                 <div class="placeholder">

@@ -45,7 +45,7 @@ form
     max-width: 600px;
 }
 
-form :where(input[type="number"], textarea)
+form :where(input[type="number"], input[type=text], textarea)
 {
     background-color: #3337;
     border: 0.05em solid #444;
@@ -54,7 +54,7 @@ form :where(input[type="number"], textarea)
     transition: 0.2s border-color ease;
 }
 
-form :where(input[type="number"], textarea):focus
+form :where(input[type="number"], input[type=text], textarea):focus
 {
     border-color: var(--accent-color);
 }
@@ -64,6 +64,12 @@ form input[type="number"]
     height: max-content;
     width: max-content;
     padding: 0.5em;
+}
+
+form input[type="text"]
+{
+    padding: 0.7em 1em;
+    border-radius: 100vw;
 }
 
 form textarea
