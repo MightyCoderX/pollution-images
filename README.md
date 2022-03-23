@@ -106,3 +106,64 @@ Response
   "placeId": 1
 }
 ```
+
+<br>
+
+#### Get list of all places
+```HTTP
+GET /places/
+```
+
+Response
+```JSONC
+[
+    {
+        "id": 1,
+        "name": "Japan",
+        "latitude": 35.6291,
+        "longitude": 139.757,
+        "images": [
+            {
+                "id": 5,
+                "fileName": "/images/<uuid>.jpg",
+                "mimeType": "image/jpeg",
+                "size": 2449031,
+                "dateCreated": "2022-03-19T22:58:33.000Z",
+                "description": "A description",
+                "placeId": 1
+            },
+            // ...
+        ]
+    },
+    // ...
+]
+```
+
+<br>
+
+#### Get one place
+```HTTP
+GET /places/:id
+```
+
+Response
+```JSONC
+{
+    "id": 1,
+    "name": "Japan",
+    "latitude": 35.6291,
+    "longitude": 139.757,
+    "images": [
+        {
+            "id": 5,
+            "fileName": "/images/<uuid>.jpg",
+            "mimeType": "image/jpeg",
+            "size": 2449031,
+            "dateCreated": "2022-03-19T22:58:33.000Z",
+            "description": "A description",
+            "placeId": 1
+        },
+        // ...
+    ]
+}
+```
