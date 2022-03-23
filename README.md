@@ -13,6 +13,13 @@ https://pollution-images-api.herokuapp.com/api/
 
 ### Endpoints
 
+#### Resources
+- [/images](#get-a-list-of-all-the-uploaded-images)
+- [/places](#get-list-of-all-places)
+
+<br>
+<br>
+
 #### Get a list of all the uploaded images
 ```HTTP
 GET /images
