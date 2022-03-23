@@ -86,6 +86,7 @@ The POST request must include `Content-Type: multipart/form-data` and the body m
 ```YML
 image: file
 description: string
+placeName: string
 latitude: number
 longitude: number
 ```
