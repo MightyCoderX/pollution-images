@@ -95,6 +95,8 @@ Basic form
     <input type="file" name="image" accept="image/*" required>
     <textarea name="description" required></textarea>
 
+
+    <input type="text" name="placeName">
     <input type="number" step="any" name="latitude" required>
     <input type="number" step="any" name="longitude" required>
 
