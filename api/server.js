@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 const PORT = process.env.PORT || 3000;
-const ORIGIN = `https://localhost:${PORT}`;
+const ORIGIN = `http://localhost:${PORT}`;
 const app = express();
 
 import placesRoutes from './routes/placeRoutes.js';

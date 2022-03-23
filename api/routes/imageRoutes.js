@@ -3,7 +3,7 @@ import { v4 as uuidV4 } from 'uuid';
 import fs from 'fs';
 import multer from 'multer';
 import { sendErrorResponse, sendNotFoundError, sendServerError } from '../utils/responseUtil.js';
-import { getAllImages, addImage } from '../controllers/imageController.js';
+import { getAllImages, getImage, addImage } from '../controllers/imageController.js';
 import { addPlace } from '../controllers/placeController.js';
 
 const router = express.Router();
@@ -29,6 +29,28 @@ router.get('/images', async (req, res) =>
     }
 });
 
+router.get('/images/:id', async (req, res) =>
+{
+    if(isNaN(req.params.id))
+        return sendServerError(res, 'Invalid id, it must be a number!');
+
+    try
+    {
+        const image = await getImage(req.params.id);
+
+        if(image == null)
+        {
+            return sendNotFoundError(res, 'Image');
+        }
+
+        res.json(image);
+    }
+    catch(err)
+    {
+        sendServerError(res, err.message);
+    }
+});
+
 const upload = multer({ dest: 'images' });
 router.post('/images/new', upload.single('image'), async (req, res) =>
 {
@@ -38,7 +60,7 @@ router.post('/images/new', upload.single('image'), async (req, res) =>
     if(isNaN(req.body.latitude) || isNaN(req.body.longitude))
         return res.status(400).json({ error: `Bad Request: 'latitude' and 'longitude' must be numbers!` });
     
-    const dir = 'images';
+    const dir = '../images';
     if(!fs.existsSync(dir))
     {
         fs.mkdirSync(dir, { recursive: true });

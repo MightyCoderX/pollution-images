@@ -18,10 +18,8 @@
     <body>
         <h1>Pollution Images API Sample Form</h1>
         <form action="/api/images/new" method="post" enctype="multipart/form-data">
-            <div class="field">
-                <span class="field-label">Place Name</span>
-                <input type="text" name="placeName" id="placeName" placeholder="Insert place name">
-            </div>
+
+            <h2>Image</h2>
 
             <div class="field image">
                 <img src="" alt="preview" id="preview" class="preview">
@@ -37,8 +35,17 @@
                 <textarea name="description" id="description" placeholder="Describe the image you want to upload..." required></textarea>
             </div>
 
+            <h2>Location</h2>
+
+            <div class="field">
+                    <span class="field-label">Name</span>
+                    <input type="text" name="placeName" id="placeName" placeholder="Insert place name" list="places" autocomplete="off">
+                    <datalist id="places"></datalist>
+            </div>
+
             <div class="field location">
-                <span class="field-label">Location <span style="color: #999; font-size: 0.9em;">(Click on the map to select a location!)</span></span>
+                <span class="field-label">Coordinates <span style="color: #999; font-size: 0.9em;">(Click on the map to select a location!)</span></span>
+                
                 <div class="coords-input">
                     <input type="number" step="any" id="latitude" name="latitude" placeholder="Latitude" title="Latitude" required>
                     <input type="number" step="any" id="longitude" name="longitude" placeholder="Longitude" title="Longitude" required>

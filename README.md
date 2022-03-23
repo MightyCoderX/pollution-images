@@ -43,8 +43,7 @@ Sample Response
     "size": 69471,
     "dateCreated": 1645634608320,
     "description": "An Image Showing A Polluted Area",
-    "latitude": 0.24107697642621,
-    "longitude": 0.24979591369629
+    "placeId": 1
   },
   // ...
 ]
@@ -64,10 +63,9 @@ Response
     "fileName": "/images/<UUID>.jpg",
     "mimeType": "image/jpeg",
     "size": 69420,
-    "dateCreated": 1645634608320,
+    "dateCreated": "2022-03-19T21:58:33.000Z",
     "description": "An Image Showing A Polluted Area",
-    "latitude": 0.24107697642621,
-    "longitude": 0.24979591369629
+    "placeId": 1
 }
 ```
 
@@ -100,12 +98,11 @@ Response
 ```JSON
 {
   "id": 1,
-  "fileName": "/images/<uuid>.jpg",
+  "fileName": "/images/<UUID>.jpg",
   "mimeType": "image/jpeg",
   "size": 69420,
-  "dateCreated": 1645634608320,
+  "dateCreated": "2022-03-19T21:58:33.000Z",
   "description": "An Image Showing A Polluted Area",
-  "latitude": 0.24107697642621,
-  "longitude": 0.24979591369629
+  "placeId": 1
 }
 ```

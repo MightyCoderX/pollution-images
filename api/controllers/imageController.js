@@ -10,6 +10,11 @@ export async function getAllImages(options)
     return await query(`SELECT * FROM images ${ limit !== undefined ? 'LIMIT ' + limit : '' }`);
 }
 
+export async function getImage(id)
+{
+    return (await query(`SELECT * FROM images WHERE id = ${id}`))[0];
+}
+
 export async function getPlaceImages(placeId)
 {
     return await query(`SELECT * FROM images WHERE placeId = ${placeId}`);

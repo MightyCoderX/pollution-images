@@ -1,5 +1,5 @@
 import express from 'express';
-import * as placeController from '../controllers/placeController.js';
+import { getPlace, getAllPlaces} from '../controllers/placeController.js';
 import { sendNotFoundError, sendServerError } from '../utils/responseUtil.js';
 
 const router = express.Router();
@@ -15,7 +15,7 @@ router.get('/places', async (req, res) =>
 
     try
     {
-        const places = await placeController.getAllPlaces({ query: req.query });
+        const places = await getAllPlaces({ query: req.query });
         res.json(places);
     }
     catch(err)
@@ -32,7 +32,7 @@ router.get('/places/:id', async (req, res) =>
 
     try
     {
-        const place = await placeController.getPlace(req.params.id);
+        const place = await getPlace(req.params.id);
 
         if(place == null)
         {
@@ -43,6 +43,6 @@ router.get('/places/:id', async (req, res) =>
     }
     catch(err)
     {
-        res.sendServerError(res, err.message);
+        sendServerError(res, err.message);
     }
 });

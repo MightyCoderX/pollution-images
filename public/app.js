@@ -1,8 +1,39 @@
 const imageInput = document.getElementById('image');
 const latInput = document.getElementById('latitude');
 const lngInput = document.getElementById('longitude');
+const placeNameInput = document.getElementById('placeName');
+const placesDataList = document.getElementById('places');
 
 updateImagePreview();
+
+fetch('/api/places')
+.then(res => res.json())
+.then(places =>
+{
+    for(let place of places)
+    {
+        const placeOpt = document.createElement('option');
+        placeOpt.value = place.name;
+        placesDataList.appendChild(placeOpt);
+    }
+
+    const placeNames = places.map(place => place.name);
+
+    console.log(placeNames);
+
+    placeNameInput.addEventListener('change', e =>
+    {
+        console.log('place input changed');
+
+        if(!placeNames.map(name => name.toLowerCase()).includes(placeNameInput.value.toLowerCase())) return;
+        
+        const place = places.filter(place => place.name.toLowerCase() === placeNameInput.value.toLowerCase())[0];
+        latInput.value = place.latitude;
+        lngInput.value = place.longitude;
+
+        updateMapCoords();
+    });
+});
 
 imageInput.addEventListener('change', updateImagePreview);
 
@@ -35,12 +66,20 @@ map.addEventListener('click', e =>
     lngInput.value = lng;
 });
 
-latInput.addEventListener('change', updateView);
-lngInput.addEventListener('change', updateView);
+latInput.addEventListener('change', updateMapCoords);
+lngInput.addEventListener('change', updateMapCoords);
 
-function updateView()
+function updateMapCoords(instant)
 {
     const lat = latInput.value;
     const lng = lngInput.value;
-    map.flyTo([lat, lng], 10);
+
+    if(instant === false)
+    {
+        map.flyTo([lat, lng], 10);
+    }
+    else
+    {
+        map.setView([lat, lng], 10);
+    }
 }
