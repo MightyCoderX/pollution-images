@@ -29,12 +29,12 @@ export async function addPlace(placeData)
 {
     const places = await query(`SELECT id FROM places WHERE name = '${placeData.name}'`);
 
-    if(places[0] === undefined)
+    if(!places[0])
     {
         const place = await query('INSERT INTO places (name, latitude, longitude) VALUES (?, ?, ?)', 
             Object.values(placeData));
         
-        return place;
+        return { id: place.insertId };
     }
 
     return places[0];

@@ -60,7 +60,7 @@ router.post('/images/new', upload.single('image'), async (req, res) =>
     if(isNaN(req.body.latitude) || isNaN(req.body.longitude))
         return res.status(400).json({ error: `Bad Request: 'latitude' and 'longitude' must be numbers!` });
     
-    const dir = './images';
+    const dir = 'images';
     if(!fs.existsSync(dir))
     {
         fs.mkdirSync(dir, { recursive: true });
@@ -77,7 +77,7 @@ router.post('/images/new', upload.single('image'), async (req, res) =>
     });
 
     const imageData = {
-        fileName: '/' + newPath,
+        fileName: newPath,
         mimeType: req.file.mimetype,
         size: req.file.size,
         dateCreated: new Date().toISOString().slice(0, -1).replace('T', ' '),
@@ -94,6 +94,8 @@ router.post('/images/new', upload.single('image'), async (req, res) =>
     try
     {
         const place = await addPlace(placeData);
+
+        console.log(place);
 
         imageData.placeId = place.id;
     }

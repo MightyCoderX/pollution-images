@@ -32,6 +32,7 @@ fetch('/api/places')
         lngInput.value = place.longitude;
 
         updateMapCoords();
+        createMarker(place.latitude, place.longitude);
     });
 });
 
@@ -59,12 +60,16 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let marker;
 map.addEventListener('click', e =>
 {
+    createMarker(e.latlng.lat, e.latlng.lng);
+});
+
+function createMarker(lat, lng)
+{
     if(marker) marker.remove();
-    const { lat, lng } = e.latlng;
     marker = L.marker([lat, lng]).addTo(map);
     latInput.value = lat;
     lngInput.value = lng;
-});
+}
 
 latInput.addEventListener('change', updateMapCoords);
 lngInput.addEventListener('change', updateMapCoords);

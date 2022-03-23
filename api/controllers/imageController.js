@@ -30,5 +30,5 @@ export async function addImage(imageData)
     `
     , Object.values(imageData));
     
-    return { id: response.insertId-1, ...imageData };
+    return { id: response.insertId, ...imageData };
 }
