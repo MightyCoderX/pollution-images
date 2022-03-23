@@ -60,7 +60,7 @@ router.post('/images/new', upload.single('image'), async (req, res) =>
     if(isNaN(req.body.latitude) || isNaN(req.body.longitude))
         return res.status(400).json({ error: `Bad Request: 'latitude' and 'longitude' must be numbers!` });
     
-    const dir = '../images';
+    const dir = './images';
     if(!fs.existsSync(dir))
     {
         fs.mkdirSync(dir, { recursive: true });
