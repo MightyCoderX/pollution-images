@@ -1,6 +1,8 @@
-import mysql from "mysql";
+import mysql from 'mysql';
+import { config } from 'dotenv';
+config();
 
-export const connection = new mysql.createConnection('mysql://tbxm1qqumm2042ib:isu82nb88f28icp2@i54jns50s3z6gbjt.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/o9xctk7eg0mzfcjs');
+export const connection = new mysql.createConnection(process.env.CONNECTION_STRING);
 
 function onConnect(error, results, fields)
 {
