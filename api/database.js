@@ -2,7 +2,7 @@ import mysql from 'mysql';
 import { config } from 'dotenv';
 config();
 
-export const connection = new mysql.createConnection(process.env.CONNECTION_STRING);
+export const connection = new mysql.createConnection(process.env.JAWSDB_URL);
 
 function onConnect(error, results, fields)
 {
